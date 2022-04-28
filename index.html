@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../tailwind/build/tailwind.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hurricane&family=Oswald:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,300&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        html{
+            font-family: 'Roboto',sans-serif;
+        }
+        .top_100-8{
+            top: calc(100% + 8px);
+        }
+        .avt ul{
+            transform-origin: top right;
+            animation: scale ease-in 0.1s;
+        }
+        @keyframes scale{
+            0%{
+                transform: scale(0);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+        .avt:hover ul{
+            display: block;
+        }
+        .avt ul::before{
+            content: "";
+            height: 8px;
+            position: absolute;
+            top: -8px;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="h-[100vh] bg-[#13161B]">
+        <div class="fixed h-[96px] bg-[#1f232b] top-0 left-0 right-0">
+            <div class="max-w-[1092px] w-[100%] h-full flex items-center justify-around mx-auto">
+                <a href="" class="flex items-center">
+                    <i class="fa-solid fa-atom text-[40px] text-white mr-1"></i>
+                    <span class="font-bold text-[36px] text-white">Chemiscare</span>   
+                </a>
+                <ul class="flex justify-center grow">
+                    <li class="">
+                        <a class="p-4 text-[18px] text-[#868991] hover:text-[#d54253]" href="">
+                            <span class="">Diễn Đàng</span>   
+                        </a>
+                    </li>
+                    <li class="">
+                        <a class="p-4 text-[18px] text-[#868991] hover:text-[#d54253]" href="">
+                            <span class="">Lịch Thi</span>   
+                        </a>
+                    </li>
+                    <li class="">
+                        <a class="p-4 text-[18px] text-[#868991] hover:text-[#d54253]" href="">
+                            <span class="">Thể Lệ</span>   
+                        </a>
+                    </li>
+                    <li class="">
+                        <a class="p-4 text-[18px] text-[#868991] hover:text-[#d54253]" href="">
+                            <span class="">Xếp Hạng</span>   
+                        </a>
+                    </li>
+                    <li class="">
+                        <a class="p-4 text-[18px] text-[#868991] hover:text-[#d54253]" href="">
+                            <span class="">Hỏi Đáp</span>   
+                        </a>
+                    </li>
+                </ul>
+                <div class="flex items-center">
+                    <i class="fa-solid fa-magnifying-glass text-[#868991] px-5 py-5 cursor-pointer hover:text-[#d54253] text-[18px]"></i>
+                    <!-- <span class="cursor-pointer px-5 text-[18px] text-[#868991] hover:text-[#d54253]">Đăng nhập</span>
+                    <span class="cursor-pointer px-5 py-[10px] text-[18px] text-[#000] rounded-[9px] bg-white hover:bg-[#fafafa]">Đăng ký</span> -->
+                    <div class="text-white relative cursor-pointer w-[40px] h-[40px] ml-5 mr-3 bg-[#B8BCC6] rounded-[50%] text-[22px] items-center justify-center flex hover:bg-[#D44253]  avt">
+                        <img src="https://images.unsplash.com/photo-1650902153035-ecee8f4e8bb4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" class="w-full h-full rounded-[50%] object-cover">
+                        <span class="hidden">S</span>
+                        <ul class="absolute top_100-8 bg-[#3D4048] right-0 text-[18px] px-8 text-white py-4 font-normal rounded-[9px] hidden">
+                            <li class="flex py-2 border-b-[1px] border-[#51535a] border-solid items-center">
+                                <div>
+                                    <span class="cursor-pointer w-[40px] h-[40px] bg-[#D44253] rounded-[50%] text-[22px] items-center justify-center flex font-light mr-1">
+                                        <span class="hidden">S</span>
+                                        <img src="https://images.unsplash.com/photo-1650902153035-ecee8f4e8bb4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" class="w-full h-full rounded-[50%] object-cover">
+                                    </span>
+                                </div>
+                                <span class="leading-[20px] text-[16px]">
+                                    <span class="hover:text-[#d54253]">Trịnh Văn Sơn</span>
+                                    <span class="cursor-text text-[12px] text-[#868991] overflow-hidden block max-w-[200px] min-w-[150px]">@gmail.com</span>
+                                </span>
+                            </li>
+
+                            <li class="py-2 hover:text-[#d54253]">Lịch sử</li>
+                            <li class="py-2 hover:text-[#d54253] border-b-[1px] border-[#51535a] border-solid">Xếp hạng của tôi</li>
+
+                            <li class="py-2 hover:text-[#d54253]">Đăng xuất</li>
+                        </ul>
+                    </div><!--Chữ cái đầu của user nếu chưa có avt-->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
