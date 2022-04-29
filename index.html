@@ -40,11 +40,35 @@
             left: 0;
             right: 0;
         }
+        .board_header div:first-child{
+            border-top-left-radius: 12px;
+        }
+        .board_header div:last-child{
+            border-top-right-radius: 12px;
+        }
+        .board_body-lastitem div:first-child{
+            border-bottom-left-radius: 12px;
+        }
+        .board_body-lastitem div:last-child{
+            border-bottom-right-radius: 12px;
+        }
+        .rank-item:last-child{
+            border-bottom-right-radius: 12px;
+            border-bottom-left-radius: 12px;
+        }
+        .rank-item::before{
+            content: "";
+            border-bottom: 1px solid #27272a;
+            width: 76%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
     </style>
 </head>
 <body>
-    <div class="h-[100vh] bg-[#13161B]">
-        <div class="fixed h-[96px] bg-[#1f232b] top-0 left-0 right-0">
+    <div class="py-[60px] bg-[#13161B] mt-[96px] relative">
+        <div class="fixed h-[96px] bg-[#1f232b] top-0 left-0 right-0 z-[999]">
             <div class="max-w-[1092px] w-[100%] h-full flex items-center justify-around mx-auto">
                 <a href="" class="flex items-center">
                     <i class="fa-solid fa-atom text-[40px] text-white mr-1"></i>
@@ -81,10 +105,10 @@
                     <i class="fa-solid fa-magnifying-glass text-[#868991] px-5 py-5 cursor-pointer hover:text-[#d54253] text-[18px]"></i>
                     <!-- <span class="cursor-pointer px-5 text-[18px] text-[#868991] hover:text-[#d54253]">Đăng nhập</span>
                     <span class="cursor-pointer px-5 py-[10px] text-[18px] text-[#000] rounded-[9px] bg-white hover:bg-[#fafafa]">Đăng ký</span> -->
-                    <div class="text-white relative cursor-pointer w-[40px] h-[40px] ml-5 mr-3 bg-[#B8BCC6] rounded-[50%] text-[22px] items-center justify-center flex hover:bg-[#D44253]  avt">
+                    <div class="text-white relative cursor-pointer w-[40px] h-[40px] ml-5 bg-[#B8BCC6] rounded-[50%] text-[22px] items-center justify-center flex hover:bg-[#D44253]  avt">
                         <img src="https://images.unsplash.com/photo-1650902153035-ecee8f4e8bb4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" class="w-full h-full rounded-[50%] object-cover">
                         <span class="hidden">S</span>
-                        <ul class="absolute top_100-8 bg-[#3D4048] right-0 text-[18px] px-8 text-white py-4 font-normal rounded-[9px] hidden">
+                        <ul class="absolute top_100-8 bg-[#3D4048] right-0 text-[18px] px-8 text-white py-4 font-normal rounded-[9px] hidden z-10">
                             <li class="flex py-2 border-b-[1px] border-[#51535a] border-solid items-center">
                                 <div>
                                     <span class="cursor-pointer w-[40px] h-[40px] bg-[#D44253] rounded-[50%] text-[22px] items-center justify-center flex font-light mr-1">
@@ -103,9 +127,196 @@
 
                             <li class="py-2 hover:text-[#d54253]">Đăng xuất</li>
                         </ul>
-                    </div><!--Chữ cái đầu của user nếu chưa có avt-->
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="max-w-[1092px] w-[100%] mx-auto">
+            <div class="flex justify-between flex-wrap mb-[100px]">
+                <div class="">
+                    <p class="text-white font-bold text-2xl leading-5 mb-[20px]">Đề thi dành cho học sinh lớp 8</p>
+                    <div class="flex text-white mb-[4px] board_header">
+                        <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">STT</div>
+                        <div class="w-[200px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">Bài Thi</div>
+                        <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">Lần Thi</div>
+                        <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">Điểm Đã Thi</div>
+                        <div class="w-[180px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">Thời Gian Thi (giây)</div>
+                    </div>
+                    <div>
+                        <div class="flex text-[#111827]">
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
+                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">
+                                <button class="bg-[#3f3f46] text-white px-3 py-2 rounded-md hover:bg-[#4e4e57]">Làm bài thi số 1</button>
+                            </div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
+                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
+                        </div>
+                        <div class="flex text-[#111827]">
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">2</div>
+                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">
+                                <button class="bg-[#3f3f46] text-white px-3 py-2 rounded-md hover:bg-[#4e4e57]">Làm bài thi số 2</button>
+                            </div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
+                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
+                        </div>
+                        <div class="flex text-[#111827]">
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">3</div>
+                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">
+                                <button class="bg-[#3f3f46] text-white px-3 py-2 rounded-md hover:bg-[#4e4e57]">Làm bài thi số 3</button>
+                            </div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
+                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
+                        </div>
+                        <div class="flex text-[#111827]">
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
+                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">
+                                <button class="bg-[#3f3f46] text-white px-3 py-2 rounded-md hover:bg-[#4e4e57]">Làm bài thi số 4</button>
+                            </div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
+                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
+                        </div>
+                        <div class="flex text-[#111827] board_body-lastitem">
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] "></div>
+                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">
+                                Tổng
+                            </div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] "></div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">400</div>
+                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">240</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-white font-bold text-2xl leading-5 mb-[20px]">Xếp hạng</p>
+                    <ul class="">
+                        <li class="w-[260px] rounded-t-[6px]  bg-[#353945] text-center text-white font-bold py-4 mb-[4px]">Xếp hạng cao nhất quốc gia</li>
+                        <li class="w-[260px] bg-[#fafafa] p-2 relative">
+                            <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
+                            <p><span class="font-bold">SBD</span>: 2412315</p>
+                            <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
+                        </li>
+                        <li class="w-[260px] bg-[#fafafa] p-2 relative rank-item">
+                            <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
+                            <p><span class="font-bold">SBD</span>: 2412315</p>
+                            <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
+                        </li>
+                        <li class="w-[260px] bg-[#fafafa] p-2 relative rank-item">
+                            <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
+                            <p><span class="font-bold">SBD</span>: 2412315</p>
+                            <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="">
+                    <p class="text-white font-bold text-2xl leading-5 mb-[20px]">Lịch sử thi các vòng</p>
+                    <div class="flex text-white mb-[4px] board_header">
+                        <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">STT</div>
+                        <div class="w-[200px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">Vòng</div>
+                        <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">Số lần thi</div>
+                        <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">thời gian thi</div>
+                        <div class="w-[180px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">điểm</div>
+                    </div>
+                    <div>
+                        <div class="flex text-[#111827]">
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
+                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">3</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
+                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
+                        </div>
+                        <div class="flex text-[#111827]">
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">2</div>
+                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">3</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
+                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
+                        </div>
+                        <div class="flex text-[#111827]">
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">3</div>
+                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">3</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
+                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
+                        </div>
+                        <div class="flex text-[#111827]">
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
+                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
+                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
+                        </div>
+                        <div class="flex text-[#111827]">
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
+                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
+                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
+                        </div>
+                        <div class="flex text-[#111827]">
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
+                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
+                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
+                        </div>
+                        <div class="flex text-[#111827]">
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
+                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
+                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
+                        </div>
+                        <div class="flex text-[#111827]">
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
+                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
+                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
+                        </div>
+                        <div class="flex text-[#111827]">
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
+                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
+                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
+                        </div>
+                        <div class="flex text-[#111827] board_body-lastitem">
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
+                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
+                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
+                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <ul class="mt-[40px]">
+                        <li class="w-[260px] rounded-t-[6px]  bg-[#353945] text-center text-white font-bold py-4 mb-[4px]">Xếp hạng cao nhất tỉnh</li>
+                        <li class="w-[260px] bg-[#fafafa] p-2 relative">
+                            <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
+                            <p><span class="font-bold">SBD</span>: 2412315</p>
+                            <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
+                        </li>
+                        <li class="w-[260px] bg-[#fafafa] p-2 relative rank-item">
+                            <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
+                            <p><span class="font-bold">SBD</span>: 2412315</p>
+                            <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
+                        </li>
+                        <li class="w-[260px] bg-[#fafafa] p-2 relative rank-item">
+                            <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
+                            <p><span class="font-bold">SBD</span>: 2412315</p>
+                            <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="h-[64px] bg-[#16191F] absolute bottom-0 left-0 right-0">
+            Copyright © 2021  - SownVipro & TCODEDAO
         </div>
     </div>
 </body>
