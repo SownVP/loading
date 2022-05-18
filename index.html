@@ -21,6 +21,26 @@
             transform-origin: top right;
             animation: scale ease-in 0.1s;
         }
+        .navIcon ul{
+            animation: scale ease-in 0.1s;
+            transform-origin: top right;
+        }
+        
+        .navIcon:hover ul{
+            display: flex;
+        }
+        
+        .boder-bot{
+            position: relative;
+        }
+        .boder-bot::after{
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 0;
+            border-bottom: 1px solid #fafafa;
+            width: 80%;
+        }
         @keyframes scale{
             0%{
                 transform: scale(0);
@@ -46,10 +66,10 @@
         .board_header div:last-child{
             border-top-right-radius: 12px;
         }
-        .board_body-lastitem div:first-child{
+        .boardBody:last-child div:first-child{
             border-bottom-left-radius: 12px;
         }
-        .board_body-lastitem div:last-child{
+        .boardBody:last-child div:last-child{
             border-bottom-right-radius: 12px;
         }
         .rank-item:last-child{
@@ -64,17 +84,128 @@
             top: 0;
             left: 0;
         }
+        
+        @media screen and (max-width: 1070px){
+            .nav{
+                display: none;
+            }
+            .navIcon{
+                display: block;
+            }
+        }
+        @media screen and (min-width: 741px) and (max-width: 1070px){
+            .boardHeaderItem{
+                width: 25%;
+                font-size: 14px;
+            }
+            .boardBodyItem{
+                width: 25%;
+            }
+            .boardWrapper{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+            .boardMain{
+                width: calc(100% - 40px);
+            }
+            .textFooterCenter{
+                display: none;
+            }
+            .boardWrapperRank{
+                margin-top: 40px;
+                justify-content: space-around;
+            }
+            .contentFooter{
+                justify-content: space-around;
+            }
+            .boardRank{
+                width: calc(50% - 40px);
+            }
+            .boardRank ul,.boardRank ul li{
+                width: 100%;
+            }
+        }
+        @media screen and (max-width: 740px){
+            .boardWrapper{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                flex-grow: 1;
+            }
+            .board_header{
+                flex-grow: 1;
+            }
+            .boardHeaderItem{
+                width: 25%;
+                font-size: 14px;
+            }
+            .boardBodyItem{
+                width: 25%;
+            }
+            .examButtonInMobile{
+                display: block;
+            }
+            .board_header div:nth-child(2){
+                border-top-left-radius: 12px;
+            }
+            .boardBody:last-child div:nth-child(2){
+                border-bottom-left-radius: 12px;
+            }
+            .examButton,
+            .serial,
+            .searchIcon,
+            .socialFooter,
+            .textFooterCenter{
+                display: none;
+            }
+            .contentFooter{
+                justify-content: center;
+            }
+            .boardWrapperRank{
+                margin-top: 40px;
+            }
+            .boardMain{
+                width: calc(100% - 8px);
+            }
+        }
+        @media screen and (max-width: 320px){
+            .avt{
+                margin-left: 8px;
+            }
+            .logoIcon{
+                font-size: 36px;
+            }
+            .logoName{
+                font-size: 32px;
+            }
+            .navIcon{
+                font-size: 32px !important;
+            }
+        }
+        @media screen and (max-width: 280px){
+            .logoIcon{
+                font-size: 32px;
+            }
+            .logoName{
+                font-size: 28px;
+            }
+            .navIcon{
+                font-size: 28px !important;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="py-[60px] bg-[#13161B] mt-[96px] relative">
+    <div class="py-[60px] bg-[#13161B] mt-[96px] relative min-h-[100vh]">
         <div class="fixed h-[96px] bg-[#1f232b] top-0 left-0 right-0 z-[999]">
             <div class="max-w-[1092px] w-[100%] h-full flex items-center justify-between mx-auto">
                 <a href="" class="flex items-center">
-                    <i class="fa-solid fa-atom text-[40px] text-white mr-1"></i>
-                    <span class="font-bold text-[36px] text-white">Chemiscare</span>   
+                    <i class="fa-solid fa-atom text-[40px] text-white mr-1 logoIcon"></i>
+                    <span class="font-bold text-[36px] text-white logoName">Chemiscare</span>   
                 </a>
-                <ul class="flex justify-center grow">
+                <ul class="flex justify-center grow nav">
                     <li class="">
                         <a class="p-4 text-[18px] text-[#868991] hover:text-[#d54253]" href="">
                             <i class="fa-solid fa-file-lines"></i>
@@ -107,7 +238,36 @@
                     </li>
                 </ul>
                 <div class="flex items-center">
-                    <i class="fa-solid fa-magnifying-glass text-[#868991] px-5 py-5 cursor-pointer hover:text-[#d54253] text-[18px]"></i>
+                    <i class="fa-solid fa-magnifying-glass text-[#868991] px-5 py-5 cursor-pointer hover:text-[#d54253] text-[18px] searchIcon"></i>
+                    <div class="relative navIcon hidden">
+                        <i class="fa-solid fa-bars text-[30px]  hover:text-[#d54253] text-[#868991]"></i>
+                        <ul class="justify-between grow absolute top-[100%] right-1 flex-col bg-[#3d4048] text-white rounded-[4px] hidden">
+                            <li class="w-[200px]">
+                                <a class="px-6 block py-4 boder-bot hover:text-[#d54253]" href="">
+                                    <i class="text-[18px] fa-solid fa-house"></i>
+                                    <span class="text-sm text-[16px]">Diễn Đàng</span>   
+                                </a>
+                            </li>
+                            <li class="w-[200px]">
+                                <a class="px-6 block py-4 boder-bot hover:text-[#d54253]" href="">
+                                    <i class="text-[18px] fa-solid fa-calendar"></i>
+                                    <span class="text-sm text-[16px]">Lịch Thi</span>   
+                                </a>
+                            </li>
+                            <li class="w-[200px]">
+                                <a class="px-6 block py-4 boder-bot hover:text-[#d54253]" href="">
+                                    <i class="text-[18px] fa-solid fa-scale-balanced"></i>
+                                    <span class="text-sm text-[16px]">Thể Lệ</span>   
+                                </a>
+                            </li>
+                            <li class="w-[200px]">
+                                <a class="px-6 block py-4 hover:text-[#d54253]" href="">
+                                    <i class="text-[18px] fa-solid fa-circle-question"></i>
+                                    <span class="text-sm text-[16px]">Hỏi Đáp</span>   
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                     <!-- <span class="cursor-pointer px-5 text-[18px] text-[#868991] hover:text-[#d54253]">Đăng nhập</span>
                     <span class="cursor-pointer px-5 py-[10px] text-[18px] text-[#000] rounded-[9px] bg-white hover:bg-[#fafafa]">Đăng ký</span> -->
                     <div class="text-white relative cursor-pointer w-[40px] h-[40px] ml-5 bg-[#B8BCC6] rounded-[50%] text-[22px] items-center justify-center flex hover:bg-[#D44253]  avt">
@@ -126,7 +286,6 @@
                                     <span class="cursor-text text-[12px] text-[#868991] overflow-hidden block max-w-[200px] min-w-[150px]">@gmail.com</span>
                                 </span>
                             </li>
-
                             <li class="py-2 hover:text-[#d54253]">Lịch sử</li>
                             <li class="py-2 hover:text-[#d54253] border-b-[1px] border-[#51535a] border-solid">Xếp hạng của tôi</li>
 
@@ -138,179 +297,136 @@
         </div>
         <div class="max-w-[1092px] w-[100%] mx-auto">
             <div class="flex justify-between flex-wrap mb-[100px]">
-                <div class="">
-                    <p class="text-white font-bold text-2xl leading-5 mb-[20px]">Đề thi dành cho học sinh lớp 8</p>
-                    <div class="flex text-white mb-[4px] board_header">
-                        <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">STT</div>
-                        <div class="w-[200px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">Bài Thi</div>
-                        <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">Lần Thi</div>
-                        <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">Điểm Đã Thi</div>
-                        <div class="w-[180px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">Thời Gian Thi (giây)</div>
-                    </div>
-                    <div>
-                        <div class="flex text-[#111827]">
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
-                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">
-                                <button class="bg-[#3f3f46] text-white px-3 py-2 rounded-md hover:bg-[#4e4e57]">Làm bài thi số 1</button>
-                            </div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
-                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
+                <div class="boardWrapper">
+                    <div class="boardMain">
+                        <p class="text-white font-bold text-2xl leading-5 mb-[20px]">Đề thi dành cho học sinh lớp 8</p>
+                        <div class="flex text-white mb-[4px] board_header">
+                            <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold boardHeaderItem serial">STT</div>
+                            <div class="w-[200px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold boardHeaderItem">Bài Thi</div>
+                            <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold boardHeaderItem">Lần Thi</div>
+                            <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold boardHeaderItem">Điểm</div>
+                            <div class="w-[180px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold boardHeaderItem">Giờ</div>
                         </div>
-                        <div class="flex text-[#111827]">
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">2</div>
-                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">
-                                <button class="bg-[#3f3f46] text-white px-3 py-2 rounded-md hover:bg-[#4e4e57]">Làm bài thi số 2</button>
+                        <div>
+                            <div class="flex text-[#111827] boardBody">
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem serial">1</div>
+                                <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem">
+                                    <button class="bg-[#3f3f46] text-white px-3 py-2 rounded-md hover:bg-[#4e4e57] examButton">Làm bài 1</button>
+                                    <button class="bg-[#3f3f46] text-white px-3 py-2 rounded-md hover:bg-[#4e4e57] examButtonInMobile hidden">Làm</button>
+                                </div>
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem">1</div>
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem">100</div>
+                                <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem">60s</div>
                             </div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
-                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
-                        </div>
-                        <div class="flex text-[#111827]">
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">3</div>
-                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">
-                                <button class="bg-[#3f3f46] text-white px-3 py-2 rounded-md hover:bg-[#4e4e57]">Làm bài thi số 3</button>
+                            <div class="flex text-[#111827] boardBody">
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem serial"></div>
+                                <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem">
+                                    Tổng
+                                </div>
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem"></div>
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem">400</div>
+                                <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem">240s</div>
                             </div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
-                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
-                        </div>
-                        <div class="flex text-[#111827]">
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
-                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">
-                                <button class="bg-[#3f3f46] text-white px-3 py-2 rounded-md hover:bg-[#4e4e57]">Làm bài thi số 4</button>
-                            </div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
-                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
-                        </div>
-                        <div class="flex text-[#111827] board_body-lastitem">
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] "></div>
-                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">
-                                Tổng
-                            </div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] "></div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">400</div>
-                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">240</div>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <p class="text-white font-bold text-2xl leading-5 mb-[20px]">Xếp hạng</p>
-                    <ul class="">
-                        <li class="w-[260px] rounded-t-[6px]  bg-[#353945] text-center text-white font-bold py-4 mb-[4px]">Xếp hạng cao nhất quốc gia</li>
-                        <li class="w-[260px] bg-[#fafafa] p-2 relative">
-                            <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
-                            <p><span class="font-bold">SBD</span>: 2412315</p>
-                            <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
-                        </li>
-                        <li class="w-[260px] bg-[#fafafa] p-2 relative rank-item">
-                            <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
-                            <p><span class="font-bold">SBD</span>: 2412315</p>
-                            <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
-                        </li>
-                        <li class="w-[260px] bg-[#fafafa] p-2 relative rank-item">
-                            <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
-                            <p><span class="font-bold">SBD</span>: 2412315</p>
-                            <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="">
-                    <p class="text-white font-bold text-2xl leading-5 mb-[20px]">Lịch sử thi các vòng</p>
-                    <div class="flex text-white mb-[4px] board_header">
-                        <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">STT</div>
-                        <div class="w-[200px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">Vòng</div>
-                        <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">Số lần thi</div>
-                        <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">thời gian thi</div>
-                        <div class="w-[180px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold">điểm</div>
-                    </div>
-                    <div>
-                        <div class="flex text-[#111827]">
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
-                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">3</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
-                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
+                    <div class="mt-[40px] boardMain">
+                        <p class="text-white font-bold text-2xl leading-5 mb-[20px]">Lịch sử thi các vòng</p>
+                        <div class="flex text-white mb-[4px] board_header">
+                            <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold boardHeaderItem serial">STT</div>
+                            <div class="w-[200px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold boardHeaderItem">Vòng</div>
+                            <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold boardHeaderItem">Lần thi</div>
+                            <div class="w-[140px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold boardHeaderItem">giờ</div>
+                            <div class="w-[180px] py-4 bg-[#353945] border-r-[1px] uppercase border-[#111827] text-center font-bold boardHeaderItem">điểm</div>
                         </div>
-                        <div class="flex text-[#111827]">
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">2</div>
-                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">3</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
-                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
-                        </div>
-                        <div class="flex text-[#111827]">
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">3</div>
-                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">3</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
-                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
-                        </div>
-                        <div class="flex text-[#111827]">
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
-                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
-                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
-                        </div>
-                        <div class="flex text-[#111827]">
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
-                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
-                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
-                        </div>
-                        <div class="flex text-[#111827]">
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
-                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
-                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
-                        </div>
-                        <div class="flex text-[#111827]">
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
-                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
-                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
-                        </div>
-                        <div class="flex text-[#111827] board_body-lastitem">
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
-                            <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">4</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">1</div>
-                            <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">100</div>
-                            <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] ">60</div>
+                        <div>
+                            <div class="flex text-[#111827] boardBody">
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem serial">1</div>
+                                <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">3</div>
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">1</div>
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">100</div>
+                                <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">60</div>
+                            </div>
+                            <div class="flex text-[#111827] boardBody">
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem serial">2</div>
+                                <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">3</div>
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">1</div>
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">100</div>
+                                <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">60</div>
+                            </div>
+                            <div class="flex text-[#111827] boardBody">
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem serial">3</div>
+                                <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">3</div>
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">1</div>
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">100</div>
+                                <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">60</div>
+                            </div>
+                            <div class="flex text-[#111827] boardBody">
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem serial">4</div>
+                                <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">4</div>
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">1</div>
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">100</div>
+                                <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">60</div>
+                            </div>
+                            <div class="flex text-[#111827] boardBody">
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem serial">4</div>
+                                <div class="flex items-center justify-center w-[200px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">4</div>
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">1</div>
+                                <div class="flex items-center justify-center w-[140px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">100</div>
+                                <div class="flex items-center justify-center w-[180px] px-5 py-2 bg-[#fafafa] border-[1px] border-[#111827] boardBodyItem ">60</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <ul class="mt-[40px]">
-                        <li class="w-[260px] rounded-t-[6px]  bg-[#353945] text-center text-white font-bold py-4 mb-[4px]">Xếp hạng cao nhất tỉnh</li>
-                        <li class="w-[260px] bg-[#fafafa] p-2 relative">
-                            <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
-                            <p><span class="font-bold">SBD</span>: 2412315</p>
-                            <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
-                        </li>
-                        <li class="w-[260px] bg-[#fafafa] p-2 relative rank-item">
-                            <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
-                            <p><span class="font-bold">SBD</span>: 2412315</p>
-                            <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
-                        </li>
-                        <li class="w-[260px] bg-[#fafafa] p-2 relative rank-item">
-                            <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
-                            <p><span class="font-bold">SBD</span>: 2412315</p>
-                            <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
-                        </li>
-                    </ul>
+                <div class="boardWrapper boardWrapperRank">
+                    <div class="boardRank">
+                        <p class="text-white font-bold text-2xl leading-5 mb-[20px]">Xếp hạng</p>
+                        <ul class="">
+                            <li class="w-[260px] rounded-t-[6px]  bg-[#353945] text-center text-white font-bold py-4 mb-[4px]">Xếp hạng cao nhất quốc gia</li>
+                            <li class="w-[260px] bg-[#fafafa] p-2 relative">
+                                <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
+                                <p><span class="font-bold">SBD</span>: 2412315</p>
+                                <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
+                            </li>
+                            <li class="w-[260px] bg-[#fafafa] p-2 relative rank-item">
+                                <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
+                                <p><span class="font-bold">SBD</span>: 2412315</p>
+                                <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
+                            </li>
+                            <li class="w-[260px] bg-[#fafafa] p-2 relative rank-item">
+                                <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
+                                <p><span class="font-bold">SBD</span>: 2412315</p>
+                                <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="boardRank">
+                        <ul class="mt-[40px]">
+                            <li class="w-[260px] rounded-t-[6px]  bg-[#353945] text-center text-white font-bold py-4 mb-[4px]">Xếp hạng cao nhất tỉnh</li>
+                            <li class="w-[260px] bg-[#fafafa] p-2 relative">
+                                <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
+                                <p><span class="font-bold">SBD</span>: 2412315</p>
+                                <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
+                            </li>
+                            <li class="w-[260px] bg-[#fafafa] p-2 relative rank-item">
+                                <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
+                                <p><span class="font-bold">SBD</span>: 2412315</p>
+                                <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
+                            </li>
+                            <li class="w-[260px] bg-[#fafafa] p-2 relative rank-item">
+                                <p><span class="font-bold">Học Viên</span>: Trịnh Văn Sơn</p>
+                                <p><span class="font-bold">SBD</span>: 2412315</p>
+                                <p><span class="font-bold">Trường</span>: THCS An Sinh-Đông Triều-Quảng Ninh</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="py-[20px] bg-[#16191f] absolute bottom-0 left-0 right-0 border-[#353945] border-t-[1px] text-[#777e90]">
-            <div class="mx-auto max-w-[1092px] w-[100%] flex justify-between items-center">
+            <div class="mx-auto max-w-[1092px] w-[100%] flex justify-between items-center contentFooter">
                 <span class="text-[14px] font-light">Copyright © 2022  - <a href="" class="underline">SownVipro</a> & <a href="" class="underline">TCODEDAO</a></span>
-                <span class=""><span class="font-light text-center">Sản phẩm thuộc</span> NHÓM HỌC SINH LỚP 8A TRƯỜNG THCS AN SINH</span>
-                <span class="flex justify-between">
+                <span class="textFooterCenter"><span class="font-light">Sản phẩm thuộc</span> NHÓM HỌC SINH LỚP 8A TRƯỜNG THCS AN SINH</span>
+                <span class="flex justify-between socialFooter">
                     <a href="" class="pr-[8px]"><img class="w-[24px] h-[24px]" src="https://tek4.vn/icons/facebook-footer-icon.svg" alt=""></a>
                     <a href="" class="px-[8px]"><img class="w-[24px] h-[24px]" src="https://tek4.vn/icons/twitter-footer-icon.svg" alt=""></a>
                     <a href="" class="px-[8px]"><img class="w-[24px] h-[24px]" src="https://tek4.vn/icons/instagram-footer-icon.svg" alt=""></a>
